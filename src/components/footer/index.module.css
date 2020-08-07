@@ -1,0 +1,22 @@
+.footer {
+    width: 100%;
+    height: 60px;
+    background-color:darkblue;    
+    border-bottom: 1px solid #ada495;
+    border-top: 1px solid #ada495;
+    margin-bottom: 1%;
+    margin-top: 1%;
+  }
+
+  .footertext {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  
+  
+  .university {
+    text-align: center;
+    font-weight: bold;;
+  }
