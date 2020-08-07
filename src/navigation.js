@@ -10,6 +10,7 @@ import ItemsPage from './pages/items'
 import RegisterPage from './pages/register'
 import LoginPage from './pages/login'
 import ProfilePage from './pages/profile'
+import LogoutPage from './pages/logout'
 
 
 const Navigation = () => {
@@ -22,6 +23,7 @@ const Navigation = () => {
         <Route path="/register" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/profile/:userid" component={ProfilePage} />
+        <Route path="/logout" component={LogoutPage} />
         
       </Switch>
     </BrowserRouter>
