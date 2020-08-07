@@ -16,12 +16,13 @@
   .header-list-item:not(:first-child) {
     padding: 10px;
     margin-top: 7px;
-    border-top: 2px solid green;
+    border: 1px solid green;
+    border-radius: 5%;
   }
   
   .header-list-item:hover {
-    border-top: none;
-    border-bottom: 2px solid green;
+    background-color: gainsboro;
+    border: 2px solid green;
     font-weight: bold;
   }
   
@@ -55,9 +56,9 @@
   .aside-list-item {
     display: block;
     width: 98%;
-    border-left: 2px solid #234465;
-    border-right: 2px solid #234465;
-    margin-bottom: 11%;
+    border: 1px solid green;
+    
+    margin-bottom: 1%;
     height: 5vh;
     text-align: center;
   }
@@ -72,11 +73,9 @@
   }
   
   .aside-list-item:hover {
-    border-left: none;
-    border-right: none;
     font-weight: bold;
-    border-top: 2px solid #234465;
-    border-bottom: 2px solid #234465;
-    color: #ffa000;
+    border: 1px solid green;
+    background-color: gainsboro;
+    
   }
   
