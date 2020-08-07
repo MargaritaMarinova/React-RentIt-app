@@ -1,15 +1,15 @@
 const getNavigation = (userid) => {
 
     const links = [{
-            title: "Home",
+            title: "Начало",
             link: "/"
         },
         {
-            title: "Items",
+            title: "Продукти",
             link: "/items"
         },
         {
-            title: "Profile",
+            title: "Профил",
             link: `/profile/${userid}`
         },
         {
