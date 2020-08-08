@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styles from './index.module.css'
 import PageLayout from '../../components/page-layout'
+import {useHistory} from 'react-router-dom'
+import UserContext from '../../Context'
 
 const LogoutPage = () => {
-    return(
+
+    const context = useContext(UserContext)
+    const history = useHistory()
+    const logOut = () => {
+        context.logOut()
+        history.push('/')
+      }
+      logOut()
+      return(
+        
         <PageLayout>
             <div className = {styles.farewell}>
             <p> Благодарим, че посетихте сайта ни.</p>
@@ -13,6 +24,8 @@ const LogoutPage = () => {
         </PageLayout>
         
     )
+    
+    
 }
 
 export default LogoutPage

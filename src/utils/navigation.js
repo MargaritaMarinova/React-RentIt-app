@@ -1,3 +1,5 @@
+import LogoutPage from "../pages/logout"
+
 const getNavigation = (user) => {
 
     const authLinks = [{
@@ -13,10 +15,10 @@ const getNavigation = (user) => {
             link: `/profile/${user && user.id}`
         },
         {
-            title: "Logout",
-            link: "/logout"
+            title: "LogOut",
+            link: '/logout'
         }
-    ]
+        ]
 
     const guestLinks = [{
         title: "Начало",
