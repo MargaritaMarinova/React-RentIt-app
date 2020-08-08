@@ -4,6 +4,8 @@ import SubmitButton from '../../components/button/submitButton'
 import styles from './index.module.css'
 import PageLayout from '../../components/page-layout'
 import Input from '../../components/input'
+import authenticate from '../../utils/authenticate'
+import UserContext from '../../Context'
 
 
 class RegisterPage extends Component {
@@ -17,10 +19,31 @@ class RegisterPage extends Component {
         }
     }
 
+    static contextType = UserContext
+    
     onChange = (event, type) => {
         const newState = {}
         newState[type] = event.target.value
         this.setState(newState)
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const {
+            username,
+            password
+        } = this.state
+
+        await authenticate('http://localhost:9999/api/user/register', {
+            username,
+            password
+        }, user => {
+            this.context.logIn(user)
+            this.props.history.push('/')
+        }, (e) => {
+            console.log('Error', e)
+        }
+        )
     }
 
     render () {
@@ -31,7 +54,7 @@ class RegisterPage extends Component {
         } = this.state
     return (
         <PageLayout>
-        <div className = {styles.container}>
+        <form className = {styles.container} onSubmit={this.handleSubmit}>
             <Title title = "Register" />
             <Input
             value={username}
@@ -52,12 +75,8 @@ class RegisterPage extends Component {
             id="rePassword"
             />
 
-
-            
-        </div>
-        <div className = {styles.button}>
-        <SubmitButton title = "Register" />
-        </div>
+        <SubmitButton className = {styles.button} title = "Register" />
+        </form>
         </PageLayout>
     )
 
