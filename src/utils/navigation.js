@@ -11,6 +11,10 @@ const getNavigation = (user) => {
             link: "/items"
         },
         {
+            title: "Въведи нов продукт",
+            link: "/create"
+        },
+        {
             title: "Профил",
             link: `/profile/${user && user.id}`
         },
