@@ -9,10 +9,10 @@ module.exports = {
     },
 
     post: (req, res, next) => {
-        const { description } = req.body;
+        const { title, description, imageUrl, price, category } = req.body;
         const { _id } = req.user;
 
-        models.Item.create({ description, creator: _id })
+        models.Item.create({ title, description, imageUrl, price, category, creator: _id })
             .then((createdItem) => {
                 return Promise.all([
                     models.User.updateOne({ _id }, { $push: { posts: createdItem } }),
@@ -27,8 +27,8 @@ module.exports = {
 
     put: (req, res, next) => {
         const id = req.params.id;
-        const { description } = req.body;
-        models.Item.updateOne({ _id: id }, { description })
+        const { title, description, imageUrl, price, category } = req.body;
+        models.Item.updateOne({ _id: id }, { title, description, imageUrl, price, category })
             .then((updatedItem) => res.send(updatedItem))
             .catch(next)
     },
