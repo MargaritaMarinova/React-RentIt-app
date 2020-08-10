@@ -2,13 +2,14 @@ import LogoutPage from "../pages/logout"
 
 const getNavigation = (user) => {
 
-    const authLinks = [{
-            title: "Начало",
-            link: "/"
-        },
+    const authLinks = [
         {
             title: "Продукти",
             link: "/items"
+        },
+        {
+            title: "Въведи нов продукт",
+            link: "/create"
         },
         {
             title: "Профил",

@@ -9,6 +9,8 @@ const authenticate = async (url, body, onSuccess, onFailure) => {
     })
     const authToken = promise.headers.get('Authorization')
     document.cookie = `x-auth-token=${authToken}`
+    console.log(authToken)
+  
 
     const response = await promise.json()
 
