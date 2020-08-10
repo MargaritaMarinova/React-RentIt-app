@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
 const Schema = mongoose.Schema;
 const Model = mongoose.model;
 const { String, ObjectId } = Schema.Types;
@@ -25,7 +24,7 @@ const userSchema = new Schema({
 
 userSchema.methods = {
 
-    matchPassword: function (password) {
+    passwordsMatch: function (password) {
         return bcrypt.compare(password, this.password);
     }
 

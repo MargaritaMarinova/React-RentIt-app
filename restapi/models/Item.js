@@ -4,7 +4,7 @@ const Model = mongoose.model;
 const { String, Number, Boolean, ObjectId } = Schema.Types;
 
 const itemSchema = new Schema({
-    title: {
+    name: {
         type: String,
         required: true
     },
@@ -19,7 +19,7 @@ const itemSchema = new Schema({
     },
 
     price: {
-        type: Number
+        type: String
     },
 
     category: {

@@ -1,7 +1,7 @@
 const jwt = require('./jwt');
-const auth = require('./auth');
+const isAuth = require('./isAuth');
 
 module.exports = {
     jwt,
-    auth
+    isAuth
 };
