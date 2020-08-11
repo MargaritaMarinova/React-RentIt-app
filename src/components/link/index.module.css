@@ -1,6 +1,11 @@
-.header-link {
+.navlink {
     color: darkblue;
     text-decoration: none;
+  }
+  .navlink a:hover,
+  .navlink a:active {
+    background-color: gainsboro;
+
   }
   
   .header-list-item, .footer-list-item {

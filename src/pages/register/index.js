@@ -6,12 +6,12 @@ import PageLayout from '../../components/page-layout'
 import Input from '../../components/input'
 import authenticate from '../../utils/authenticate'
 import UserContext from '../../Context'
+import axios from '../../axios-order'
 
 
 class RegisterPage extends Component {
     constructor(props) {
         super(props)
-
         this.state={
             username: "",
             password: "",
@@ -19,7 +19,7 @@ class RegisterPage extends Component {
         }
     }
 
-    static contextType = UserContext
+    
     
     onChange = (event, type) => {
         const newState = {}
@@ -27,49 +27,44 @@ class RegisterPage extends Component {
         this.setState(newState)
     }
 
-    handleSubmit = async (event) => {
-        event.preventDefault()
-        const {
-            username,
-            password
-        } = this.state
 
-        await authenticate('http://localhost:9999/api/user/register', {
-            username,
-            password
-        }, user => {
-            this.context.logIn(user)
-            this.props.history.push('/')
-        }, (e) => {
-            console.log('Error', e)
-        }
-        )
-    }
+    handleSubmit = async (event) => {
+    event.preventDefault()
+    const user = {
+                username: this.state.username,
+                password: this.state.password,
+                rePassword: this.state.rePassword
+                
+            };
+            //console.log(user)
+            axios.post('/users.json', user)
+            
+            const list = axios.get('/users.json')
+            console.log(list)
+            
+        }  
+    
 
     render () {
-        const {
-            username,
-            password,
-            rePassword
-        } = this.state
+        
     return (
         <PageLayout>
         <form className = {styles.container} onSubmit={this.handleSubmit}>
             <Title title = "Register" />
             <Input
-            value={username}
+            value={this.state.username}
             onChange = {(e) => this.onChange(e, 'username')}
             label="Username"
             id="username"
             />
             <Input
-            value={password}
+            value={this.state.password}
             onChange = {(e) => this.onChange(e, 'password')}
             label="Password"
             id="password"
             />
             <Input
-            value={rePassword}
+            value={this.state.rePassword}
             onChange = {(e) => this.onChange(e, 'rePassword')}
             label="Re-password"
             id="rePassword"
@@ -78,9 +73,11 @@ class RegisterPage extends Component {
         <SubmitButton className = {styles.button} title = "Register" />
         </form>
         </PageLayout>
-    )
+        )
 
+    }
 }
-}
+
+
 
 export default RegisterPage

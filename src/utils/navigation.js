@@ -9,7 +9,7 @@ const getNavigation = (user) => {
         },
         {
             title: "Въведи нов продукт",
-            link: "/create"
+            link: "/item/create"
         },
         {
             title: "Профил",
