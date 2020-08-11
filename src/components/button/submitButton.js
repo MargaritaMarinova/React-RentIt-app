@@ -7,6 +7,14 @@ const SubmitButton = ({ title, onClick }) => {
   )
 }
 
+// const SubmitButton = (props) => (
+//     <Button
+//         disabled={props.disabled}
+//         className={[classes.Button, classes[props.btnType]].join(' ')}
+//         onClick={props.clicked}>{props.children}</Button>
+// );
+
+
 const Button = styled.button`
   background: #234465;
   color: #fff;

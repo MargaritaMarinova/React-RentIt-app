@@ -14,6 +14,7 @@ import LogoutPage from './pages/logout'
 import CreatePage from './pages/create'
 import CheckoutPage from './pages/checkout'
 import ThankyouPage from './pages/thankyou'
+import Auth from './components/auth'
 
 
 const Navigation = () => {
@@ -24,6 +25,7 @@ const Navigation = () => {
         <Route path="/" exact component={HomePage} />
         <Route path="/items" component={ItemsPage} />
         <Route path="/create" component={CreatePage} />
+        <Route path="/auth" component={Auth} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/profile/:userid" component={ProfilePage} />
