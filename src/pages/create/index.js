@@ -3,29 +3,20 @@ import Title from '../../components/title'
 import SubmitButton from '../../components/button/submitButton'
 import styles from './index.module.css'
 import PageLayout from '../../components/page-layout'
-import Input from '../../components/input'
-import axios from '../../axios-order'
+import axios from 'axios'
 
 
 class CreatePage extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state={
+        state={
             name: "",
             imageUrl: "",
             description: "",
             category: "",
-            price: ""
+            price: "",
+            creator: 'Magi'
         }
-    }
+    
 
-
-    onChange = (event, type) => {
-        const newState = {}
-        newState[type] = event.target.value
-        this.setState(newState)
-    }
 
     handleSubmit = async (event) => {
         event.preventDefault()
@@ -34,10 +25,11 @@ class CreatePage extends Component {
             imageUrl: this.state.imageUrl,
             description: this.state.description,
             category: this.state.category,
-            price: this.state.price
+            price: this.state.price,
+            creator: this.state.creator
         };
 
-        axios.post('/items.json', item)
+        axios.post('https://jsonplaceholder.typicode.com/posts', item)
         .then(response => {
             console.log(response)
         })
@@ -47,41 +39,50 @@ class CreatePage extends Component {
         
     return (
         <PageLayout>
-        <form className = {styles.container} onSubmit={this.handleSubmit}>
+        <form className = {styles.container}>
             <Title title = "Create" />
-            <Input
+            <label className = {styles.label}>Име</label>
+            <input className = {styles.input} type="text"
             value={this.state.name}
-            onChange = {(e) => this.onChange(e, 'name')}
-            label="Name"
+            onChange = {(event) => this.setState({name: event.target.value})}
             id="name"
             />
-            <Input
+            <label className = {styles.label}>Снимка</label>
+            <input type="text" className = {styles.input}
             value={this.state.imageUrl}
-            onChange = {(e) => this.onChange(e, 'imageUrl')}
-            label="imageUrl"
+            onChange = {(event) => this.setState({imageUrl: event.target.value})}
             id="imageUrl"
             />
-            <Input
-            value={this.state.description}
-            onChange = {(e) => this.onChange(e, 'description')}
-            label="Description"
-            id="description"
-            />
-            <Input
-            value={this.state.category}
-            onChange = {(e) => this.onChange(e, 'category')}
-            label="Category"
-            id="category"
-            />
-            <Input
+            <label className = {styles.label}>Цена за наем (7 дни)</label>
+            <input type="text" className = {styles.input}
             value={this.state.price}
-            onChange = {(e) => this.onChange(e, 'price')}
-            label="Price"
+            onChange = {(event) => this.setState({price: event.target.value})}
             id="price"
             />
-
-        <SubmitButton title = "Create" />
-        </form>
+            <label className = {styles.label}>Описание</label>
+            <textarea rows="4" className = {styles.input}
+            value={this.state.description}
+            onChange = {(event) => this.setState({description: event.target.value})}
+            id="description"
+            />
+            <label className = {styles.label}>Категория</label>
+            <select className = {styles.input}
+            value={this.state.category}
+            onChange = {(event) => this.setState({category: event.target.value})}
+            label="Категория"
+            id="category"
+            >
+                <option value="kitchen">Кухня</option>
+                <option value="livingroom">Всекидневна</option>
+                <option value="bedroom">Спалня</option>
+                <option value="bathroom">Баня</option>
+                <option value="outside">На открито</option>
+                </select>
+            </form> 
+       <div>
+        <SubmitButton onClick = {this.handleSubmit} title = "Създай" />
+        </div>
+        
         </PageLayout>
     )
 

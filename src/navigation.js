@@ -12,6 +12,8 @@ import LoginPage from './pages/login'
 import ProfilePage from './pages/profile'
 import LogoutPage from './pages/logout'
 import CreatePage from './pages/create'
+import CheckoutPage from './pages/checkout'
+import ThankyouPage from './pages/thankyou'
 
 
 const Navigation = () => {
@@ -26,6 +28,8 @@ const Navigation = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/profile/:userid" component={ProfilePage} />
         <Route path="/logout" component={LogoutPage} />
+        <Route path="/checkout" component={CheckoutPage} />
+        <Route path="/thankyou" component={ThankyouPage} />
         
       </Switch>
     </BrowserRouter>
