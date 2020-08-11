@@ -4,9 +4,7 @@ import SubmitButton from '../../components/button/submitButton'
 import styles from './index.module.css'
 import PageLayout from '../../components/page-layout'
 import Input from '../../components/input'
-//import create from '../../utils/create'
-import UserContext from '../../Context'
-import axios from 'axios'
+import axios from '../../axios-order'
 
 
 class CreatePage extends Component {
@@ -22,8 +20,7 @@ class CreatePage extends Component {
         }
     }
 
-    static contextType = UserContext
-    
+
     onChange = (event, type) => {
         const newState = {}
         newState[type] = event.target.value
@@ -40,7 +37,7 @@ class CreatePage extends Component {
             price: this.state.price
         };
 
-        axios.post('http://localhost:9999/api/item/create', item)
+        axios.post('/items.json', item)
         .then(response => {
             console.log(response)
         })
