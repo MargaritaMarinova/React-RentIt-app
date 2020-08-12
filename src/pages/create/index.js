@@ -38,7 +38,7 @@ class CreatePage extends Component {
     render () {
         
     return (
-        <PageLayout>
+        <div>
         <form className = {styles.container}>
             <Title title = "Create" />
             <label className = {styles.label}>Име</label>
@@ -83,7 +83,7 @@ class CreatePage extends Component {
         <SubmitButton onClick = {this.handleSubmit} title = "Създай" />
         </div>
         
-        </PageLayout>
+        </div>   
     )
 
     }

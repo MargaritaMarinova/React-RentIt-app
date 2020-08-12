@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import Title from '../../components/title'
 import SubmitButton from '../../components/button/submitButton'
 import styles from './index.module.css'
-import PageLayout from '../../components/page-layout'
 import Input from '../../components/input'
 import authenticate from '../../utils/authenticate'
 import UserContext from '../../Context'
@@ -30,7 +29,7 @@ const LoginPage = () => {
   }
 
   return (
-    <PageLayout>
+    <div>
       <form className={styles.container} onSubmit={handleSubmit}>
         <Title title="Login" />
         <Input
@@ -48,7 +47,7 @@ const LoginPage = () => {
         />
         <SubmitButton title="Login" />
       </form>
-    </PageLayout>
+    </div>
   )
 }
 

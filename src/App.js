@@ -1,69 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import UserContext from './Context'
-import getCookie from './utils/cookie'
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import PageLayout from './components/page-layout';
+import HomePage from './pages/home'
+import ItemsPage from './pages/items'
+import RegisterPage from './pages/register'
+import LoginPage from './pages/login'
+import ProfilePage from './pages/profile'
+import LogoutPage from './pages/logout'
+import CreatePage from './pages/create'
+import CheckoutPage from './pages/checkout'
+import ThankyouPage from './pages/thankyou'
+import Auth from './components/auth'
 
-const App = (props) => {
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
 
-  const logIn = (user) => {
-    setUser({
-      ...user,
-      loggedIn: true
-    })
-  }
-
-  const logOut = () => {
-    document.cookie = "x-auth-token= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
-    setUser({
-      loggedIn: false
-    })
-  }
-
-  useEffect(() => {
-    const token = getCookie('x-auth-token')
-    if(!token) {
-      logOut()
-      setLoading(false)
-      return
+class App extends Component {
+    render () {
+      return (
+        <div>
+          <PageLayout>
+          <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/items" component={ItemsPage} />
+          <Route path="/create" component={CreatePage} />
+          <Route path="/auth" component={Auth} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/profile/:userid" component={ProfilePage} />
+          <Route path="/logout" component={LogoutPage} />
+          <Route path="/checkout" component={CheckoutPage} />
+          <Route path="/thankyou" component={ThankyouPage} />
+        
+          </Switch>
+          </PageLayout>
+        </div>
+      );
     }
-
-    fetch('http://localhost:9999/api/user/verify', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      }
-    }).then(promise => {
-      return promise.json()
-    }).then(response => {
-      if(response.status) {
-        logIn({
-          username: response.user.username,
-          id: response.user._id
-        })
-      } else {
-        logOut()
-      }
-      setLoading(false)
-    })
-  }, [])
-
-  if (loading) {
-    return (
-      <div>Loading....</div>
-    )
   }
-
-  return (
-    <UserContext.Provider value={{
-      user,
-      logIn,
-      logOut
-    }}>
-      {props.children}
-    </UserContext.Provider>
-  )
-}
 
 export default App

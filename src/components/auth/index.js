@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Input from '../input';
 import SubmitButton from '../button/submitButton';
-import PageLayout from '../page-layout';
+
 import styles from './index.module.css';
-import * as actions from '../../actions/index';
+import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux'
 
 class Auth extends Component {
@@ -115,15 +115,12 @@ class Auth extends Component {
             />
         ))
         return(
-            <PageLayout>
             <div className = {styles.auth}>
                 <form onSubmit={this.submitHandler}>
                 {form}
                 <SubmitButton title = "Submit"/>
                 </form>
             </div>
-            </PageLayout>
-
         )
     }
 }
@@ -134,4 +131,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default Auth;
+
+
+export default connect(null, mapDispatchToProps)(Auth);

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import PageLayout from '../../components/page-layout'
+
 import ItemsSummary from '../../components/itemsSummary'
 
 class CheckoutPage extends Component {
@@ -19,12 +19,12 @@ checkoutNextHandler = () => {
 }
     render(){
         return(
-            <PageLayout>
+            
                 <ItemsSummary 
                 itemList={this.props.itemList}
                 checkoutBack = {this.checkoutBackHandler}
                 checkoutNext = {this.checkoutNextHandler}/>
-            </PageLayout>
+            
         )
     }
 

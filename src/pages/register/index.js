@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Title from '../../components/title'
 import SubmitButton from '../../components/button/submitButton'
 import styles from './index.module.css'
-import PageLayout from '../../components/page-layout'
 import Input from '../../components/input'
 import authenticate from '../../utils/authenticate'
 import UserContext from '../../Context'
@@ -40,7 +39,7 @@ class RegisterPage extends Component {
             axios.post('/users.json', user)
             
             const list = axios.get('/users.json')
-            console.log(list)
+            //console.log(list)
             
         }  
     
@@ -48,7 +47,7 @@ class RegisterPage extends Component {
     render () {
         
     return (
-        <PageLayout>
+        <div>
         <form className = {styles.container} onSubmit={this.handleSubmit}>
             <Title title = "Register" />
             <Input
@@ -72,7 +71,7 @@ class RegisterPage extends Component {
 
         <SubmitButton className = {styles.button} title = "Register" />
         </form>
-        </PageLayout>
+        </div>
         )
 
     }
