@@ -36,7 +36,7 @@ class ItemList extends Component {
                     imageUrl = {item.imageUrl}
                     name = {item.name}
                     description = {item.description}
-                    price = {item.price}
+                    price = {+item.price}
                     />
                 ))}
             </div>
