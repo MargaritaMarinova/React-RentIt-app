@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Title from '../../components/title'
 import SubmitButton from '../../components/button/submitButton'
 import styles from './index.module.css'
-import PageLayout from '../../components/page-layout'
 import axios from 'axios'
 
 
@@ -29,7 +28,7 @@ class CreatePage extends Component {
             creator: this.state.creator
         };
 
-        axios.post('https://jsonplaceholder.typicode.com/posts', item)
+        axios.post('https://rentit-86cde.firebaseio.com/items.json', item)
         .then(response => {
             console.log(response)
         })

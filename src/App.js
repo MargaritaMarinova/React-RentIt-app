@@ -22,7 +22,6 @@ class App extends Component {
           <Route path="/" exact component={HomePage} />
           <Route path="/items" component={ItemsPage} />
           <Route path="/create" component={CreatePage} />
-          <Route path="/auth" component={Auth} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/profile/:userid" component={ProfilePage} />

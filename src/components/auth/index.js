@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Input from '../input';
-import SubmitButton from '../button/submitButton';
+import AuthButton from '../button/authButton';
 
 import styles from './index.module.css';
 import * as actions from '../../store/actions/index';
@@ -9,16 +9,31 @@ import {connect} from 'react-redux'
 class Auth extends Component {
     state = {
         controls: {
-            username: {
+            // username: {
+            //     elementType: 'input',
+            //     elementConfig: {
+            //         type: 'text',
+            //         placeholder: 'Your username'
+            //     },
+            //     value: '',
+            //     validation: {
+            //         required: true,
+            //         minLength: 4
+                   
+            //     },
+            //     valid: false,
+            //     touched: false
+            // },
+            email: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
-                    placeholder: 'Your username'
+                    type: 'email',
+                    placeholder: 'Your email'
                 },
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 4
+                    isEmail: true
                    
                 },
                 valid: false,
@@ -33,13 +48,14 @@ class Auth extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 6
+                    
                    
                 },
                 valid: false,
                 touched: false
             }
         }
+    
     }
 
     checkValidity(value, rules) {
@@ -88,9 +104,14 @@ class Auth extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(this.state.controls.username.value, this.state.controls.password.value);
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
     }
 
+    // switchAuthModeHandler = () => {
+    //     this.setState(prevState => {
+    //         return {isRegister: !prevState.isRegister}
+    //     })
+    // }
 
     render() {
         const formElementArray = [];
@@ -118,8 +139,9 @@ class Auth extends Component {
             <div className = {styles.auth}>
                 <form onSubmit={this.submitHandler}>
                 {form}
-                <SubmitButton title = "Submit"/>
+                <AuthButton>Регистрация</AuthButton>
                 </form>
+                
             </div>
         )
     }
@@ -127,7 +149,7 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password) => dispatch(actions.auth(email, password))
+        onAuth: ( email, password) => dispatch(actions.auth(email, password))
     };
 };
 

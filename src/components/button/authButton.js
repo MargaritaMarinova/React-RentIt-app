@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const SubmitButton = ({ title, onClick }) => {
-  return (
-    <Button type="submit" onClick={onClick}>{title}</Button>
-  )
-}
-
-
+const AuthButton = (props) => (
+    <Button
+        disabled={props.disabled}
+        onClick={props.clicked}>{props.children}</Button>
+);
 
 const Button = styled.button`
   background: #234465;
@@ -30,4 +28,4 @@ const Button = styled.button`
   }
 `
 
-export default SubmitButton
+export default AuthButton

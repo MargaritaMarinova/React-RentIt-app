@@ -1,82 +1,155 @@
-import React, {Component} from 'react'
-import Title from '../../components/title'
-import SubmitButton from '../../components/button/submitButton'
-import styles from './index.module.css'
-import Input from '../../components/input'
-import authenticate from '../../utils/authenticate'
-import UserContext from '../../Context'
-import axios from '../../axios-order'
-
-
-class RegisterPage extends Component {
-    constructor(props) {
-        super(props)
-        this.state={
-            username: "",
-            password: "",
-            rePassword: ""
+    import React, {Component} from 'react'
+    import Input from '../../../src/components/input';
+    import AuthButton from '../../../src/components/button/authButton';
+    import styles from './index.module.css';
+    import * as actions from '../../store/actions/index';
+    import {connect} from 'react-redux'
+    
+    class RegisterPage extends Component {
+        state = {
+            controls: {
+                // username: {
+                //     elementType: 'input',
+                //     elementConfig: {
+                //         type: 'text',
+                //         placeholder: 'Your username'
+                //     },
+                //     value: '',
+                //     validation: {
+                //         required: true,
+                //         minLength: 4
+                       
+                //     },
+                //     valid: false,
+                //     touched: false
+                // },
+                email: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'email',
+                        placeholder: 'Your email'
+                    },
+                    value: '',
+                    validation: {
+                        required: true,
+                        isEmail: true
+                       
+                    },
+                    valid: false,
+                    touched: false
+                },
+                password: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'password',
+                        placeholder: 'Your password'
+                    },
+                    value: '',
+                    validation: {
+                        required: true,
+                        
+                       
+                    },
+                    valid: false,
+                    touched: false
+                }
+            },
+            isRegistration: true
+        
+        }
+    
+        checkValidity(value, rules) {
+            let isValid = true;
+            if (!rules) {
+                return true;
+            }
+            
+            if (rules.required) {
+                isValid = value.trim() !== '' && isValid;
+            }
+    
+            if (rules.minLength) {
+                isValid = value.length >= rules.minLength && isValid
+            }
+    
+            if (rules.maxLength) {
+                isValid = value.length <= rules.maxLength && isValid
+            }
+    
+            if (rules.isEmail) {
+                const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+                isValid = pattern.test(value) && isValid
+            }
+    
+            if (rules.isNumeric) {
+                const pattern = /^\d+$/;
+                isValid = pattern.test(value) && isValid
+            }
+    
+            return isValid;
+        }
+    
+        inputChangedHandler = (event, controlName) => {
+            const updatedControls = {
+                ...this.state.controls,
+                [controlName]: {
+                    ...this.state.controls[controlName],
+                    value: event.target.value,
+                    valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                    touched: true
+                }
+            };
+            this.setState({controls: updatedControls});
+        }
+    
+        submitHandler = (event) => {
+            event.preventDefault();
+            this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isRegistration);
+        }
+    
+        render() {
+            const formElementArray = [];
+            for (let key in this.state.controls) {
+                formElementArray.push({
+                    id: key,
+                    config: this.state.controls[key]
+                });
+            }
+    
+            const form = formElementArray.map(formElement => (
+                <Input 
+                key = {formElement.id}
+                elementType = {formElement.config.elementType}
+                elementConfig = {formElement.config.elementConfig}
+                value = {formElement.config.value}
+                invalid = {!formElement.config.valid}
+                shouldValidate = {formElement.config.validation}
+                touched = {formElement.config.touched}
+                changed={(event) => this.inputChangedHandler(event, formElement.id)}
+    
+                />
+            ))
+            return(
+                <div className = {styles.register}>
+                    <form onSubmit={this.submitHandler}>
+                    {form}
+                    <AuthButton>Регистрация</AuthButton>
+                    </form>
+                    
+                </div>
+            )
         }
     }
-
+    
+    const mapDispatchToProps = dispatch => {
+        return {
+            onAuth: ( email, password, isRegistration) => dispatch(actions.auth(email, password, isRegistration))
+        };
+    };
     
     
-    onChange = (event, type) => {
-        const newState = {}
-        newState[type] = event.target.value
-        this.setState(newState)
-    }
-
-
-    handleSubmit = async (event) => {
-    event.preventDefault()
-    const user = {
-                username: this.state.username,
-                password: this.state.password,
-                rePassword: this.state.rePassword
-                
-            };
-            //console.log(user)
-            axios.post('/users.json', user)
-            
-            const list = axios.get('/users.json')
-            //console.log(list)
-            
-        }  
     
-
-    render () {
-        
-    return (
-        <div>
-        <form className = {styles.container} onSubmit={this.handleSubmit}>
-            <Title title = "Register" />
-            <Input
-            value={this.state.username}
-            onChange = {(e) => this.onChange(e, 'username')}
-            label="Username"
-            id="username"
-            />
-            <Input
-            value={this.state.password}
-            onChange = {(e) => this.onChange(e, 'password')}
-            label="Password"
-            id="password"
-            />
-            <Input
-            value={this.state.rePassword}
-            onChange = {(e) => this.onChange(e, 'rePassword')}
-            label="Re-password"
-            id="rePassword"
-            />
-
-        <SubmitButton className = {styles.button} title = "Register" />
-        </form>
-        </div>
-        )
-
-    }
-}
+    export default connect(null, mapDispatchToProps)(RegisterPage);
 
 
 
-export default RegisterPage
