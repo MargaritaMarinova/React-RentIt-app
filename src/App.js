@@ -6,11 +6,12 @@ import ItemsPage from './pages/items'
 import RegisterPage from './pages/register'
 import LoginPage from './pages/login'
 import ProfilePage from './pages/profile'
-import LogoutPage from './pages/logout'
+import Logout from './components/logout/logout'
 import CreatePage from './pages/create'
 import CheckoutPage from './pages/checkout'
 import ThankyouPage from './pages/thankyou'
-import Auth from './components/auth'
+
+
 
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
           <Route path="/register" component={RegisterPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/profile/:userid" component={ProfilePage} />
-          <Route path="/logout" component={LogoutPage} />
+          <Route path="/logout" component={Logout} />
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/thankyou" component={ThankyouPage} />
         
