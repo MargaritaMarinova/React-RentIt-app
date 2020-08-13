@@ -8,7 +8,7 @@ const ItemCard = (props) => (
       <p>{props.name}</p>
       <p>{props.description}</p>
       <p>Цена за наем (7дни): <strong>{props.price.toFixed(2)} лв</strong></p>
-      <button>Детайли</button>
+      <button>Rent it!</button>
     </div>
 
 )
