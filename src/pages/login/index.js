@@ -8,22 +8,7 @@ import React, {Component} from 'react'
     class LoginPage extends Component {
         state = {
             controls: {
-                // username: {
-                //     elementType: 'input',
-                //     elementConfig: {
-                //         type: 'text',
-                //         placeholder: 'Your username'
-                //     },
-                //     value: '',
-                //     validation: {
-                //         required: true,
-                //         minLength: 4
-                       
-                //     },
-                //     valid: false,
-                //     touched: false
-                // },
-                email: {
+                    email: {
                     elementType: 'input',
                     elementConfig: {
                         type: 'email',

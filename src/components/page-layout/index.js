@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import styles from './index.module.css'
 import Header from '../header'
-import Aside from '../aside'
 import Footer from '../footer'
 import Aux from '../../hoc/AuxFile'
 import {connect} from 'react-redux'
@@ -10,7 +9,7 @@ class PageLayout extends Component {
     render(){
     return (
         <Aux>
-        <Header />
+        <Header isAuth = {this.props.isAuthenticated}/>
                 <div className = {styles.container}>
                 <main className = {styles.innercontainer}>
                 {this.props.children}

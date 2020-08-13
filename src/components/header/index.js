@@ -8,13 +8,13 @@ import Aux from '../../hoc/AuxFile'
 const Header = ( props ) => (
     <Aux>
     
-    <header className={styles.Toolbar}>
+    <header className={styles.toolbar}>
         <div>
-        <img alt="logo" className={styles.Logo} src={logo} />
+        <img alt="logo" className={styles.logo} src={logo} />
         </div>   
         
         <nav className={styles.DesktopOnly}>
-            <NavigLinks />
+            <NavigLinks isAuthenticated = {props.isAuth}/>
         </nav>
     </header>
     </Aux>
