@@ -10,7 +10,8 @@ class PageLayout extends Component {
     render(){
     return (
         <Aux>
-        <Header isAuth={this.props.isAuthenticated}/>
+        <Header />
+        
                 <main>
                 {this.props.children}
                 </main>

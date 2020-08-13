@@ -1,4 +1,4 @@
-import LogoutPage from "../pages/logout"
+
 
 const getNavigation = (user) => {
 
