@@ -21,7 +21,7 @@
 .innercontainer {
   display: inline-block;
   width: 83%;
-  height: auto;
+  height: 100%;
   /* border:1px solid blue; */
   margin-bottom: 5%;
 }

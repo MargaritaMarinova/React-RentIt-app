@@ -12,7 +12,7 @@ class PageLayout extends Component {
         <Aux>
         <Header />
                 <div className = {styles.container}>
-                <main >
+                <main className = {styles.innercontainer}>
                 {this.props.children}
                 </main>
                 </div>
