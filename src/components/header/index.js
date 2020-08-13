@@ -1,38 +1,15 @@
-import React, {Component} from 'react'
-import styles from './index.module.css'
-import logo from '../../images/logo.png'
-import getNavigation from '../../utils/navigation'
-import Link from '../link'
-import UserContext from '../../Context'
+import React from 'react';
 
-class Header extends Component {
+import classes from './index.module.css';
 
-    static contextType = UserContext
-    render(){
-      const {
-        user
-      } = this.context
-       
-      const links = getNavigation(user)
-    
-      return(
-        <header className={styles.navigation}>
-        <img alt="logo" className={styles.logo} src={logo} />
-        {
-          links.map(navElement => {
-            return (
-              <Link
-                key={navElement.title}
-                href={navElement.link}
-                title={navElement.title}
-                type="header"
-              />
-            )
-          })
-        }
-        </header>
-    )
-}
-}
+import NavigationItems from '../navigation/navigationItems';
 
-export default Header
+const toolbar = ( props ) => (
+    <header className={classes.Toolbar}>
+      <nav className={classes.DesktopOnly}>
+            <NavigationItems isAuthenticated={props.isAuth}/>
+        </nav>
+    </header>
+);
+
+export default toolbar;

@@ -1,23 +1,32 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styles from './index.module.css'
 import Header from '../header'
 import Aside from '../aside'
 import Footer from '../footer'
+import Aux from '../../hoc/AuxFile'
+import {connect} from 'react-redux'
 
-const PageLayout =(props) => {
+class PageLayout extends Component {
+    render(){
     return (
-        <div className = {styles.app}>
-            <Header />
-            <div className = {styles.container}>
-                <Aside />
-                <div className = {styles['inner-container']}>
-                {props.children}
-                </div>
-            </div>
+        <Aux>
+        <Header isAuth={this.props.isAuthenticated}/>
+                <main>
+                {this.props.children}
+                </main>
+            
         <Footer />
-        </div>
+       
+        </Aux>
     )
-
+    }
+}
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    }
 }
 
-export default PageLayout
+
+
+export default connect(mapStateToProps) (PageLayout)
