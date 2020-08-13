@@ -11,12 +11,14 @@ class PageLayout extends Component {
     return (
         <Aux>
         <Header />
-        
-                <main>
+                <div className = {styles.container}>
+                <main >
                 {this.props.children}
                 </main>
-            
+                </div>
+        <div>
         <Footer />
+        </div>
        
         </Aux>
     )

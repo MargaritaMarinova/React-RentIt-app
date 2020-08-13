@@ -14,10 +14,11 @@
     margin-top: 70px;
     padding: 0.5%;
     /* border: 1px solid purple; */
-    margin-bottom: 0.1%;
+    margin-bottom: 100px;
+    
 }
 
-.inner-container {
+.innercontainer {
   display: inline-block;
   width: 83%;
   height: auto;
