@@ -1,3 +1,18 @@
+export const ADD_ITEM_RENT = 'ADD_ITEM_RENT';
+export const REMOVE_ITEM_RENT = 'REMOVE_ITEM_RENT';
+export const SET_ITEMS = 'SET_ITEMS';
+export const FETCH_ITEMS_FAILED = 'FETCH_ITEMS_FAILED';
+
+export const CREATE_START = 'CREATE_START';
+export const CREATE_SUCCESS = 'CREATE_SUCCESS';
+export const CREATE_FAIL = 'CREATE_FAIL';
+export const CREATE_INIT = 'CREATE_INIT';
+//export const CREATE_DELETE = 'CREATE_DELETE';
+
+export const FETCH_ITEMS_START = 'FETCH_ITEMS_START';
+export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
+export const FETCH_ITEMS_FAIL = 'FETCH_ITEMS_FAIL';
+
 export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';

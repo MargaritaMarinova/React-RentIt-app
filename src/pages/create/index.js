@@ -12,7 +12,8 @@ class CreatePage extends Component {
             description: "",
             category: "",
             price: "",
-            creator: 'Magi'
+            creator: "",
+            rented: false
         }
     
 
@@ -25,7 +26,8 @@ class CreatePage extends Component {
             description: this.state.description,
             category: this.state.category,
             price: this.state.price,
-            creator: this.state.creator
+            creator: this.state.creator,
+            rented: this.state.rented
         };
 
         axios.post('https://rentit-86cde.firebaseio.com/items.json', item)

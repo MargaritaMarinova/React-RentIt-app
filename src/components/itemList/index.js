@@ -37,6 +37,7 @@ class ItemList extends Component {
                     name = {item.name}
                     description = {item.description}
                     price = {+item.price}
+                    rented = {item.rented}
                     />
                 ))}
             </div>
