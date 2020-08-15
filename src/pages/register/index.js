@@ -4,6 +4,7 @@
     import styles from './index.module.css';
     import * as actions from '../../store/actions/index';
     import {connect} from 'react-redux'
+    import {Link} from 'react-router-dom'
     
     class RegisterPage extends Component {
         state = {
@@ -117,7 +118,9 @@
                 <div className = {styles.register}>
                     <form onSubmit={this.submitHandler}>
                     {form}
+                    <Link to="/">
                     <AuthButton>Регистрация</AuthButton>
+                    </Link>
                     </form>
                     
                 </div>

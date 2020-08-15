@@ -15,6 +15,7 @@ import EditPage from './pages/edit';
 
 
 
+
 class App extends Component {
     render () {
       return (
@@ -30,6 +31,7 @@ class App extends Component {
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/thankyou" component={ThankyouPage} />
           <Route path="/edit/:id" component={EditPage} />
+          
         
           </Switch>
           </PageLayout>

@@ -4,6 +4,7 @@ import React, {Component} from 'react'
     import styles from './index.module.css';
     import * as actions from '../../store/actions/index';
     import {connect} from 'react-redux'
+    import {Link} from 'react-router-dom'
     
     class LoginPage extends Component {
         state = {
@@ -118,7 +119,10 @@ import React, {Component} from 'react'
                 <div className = {styles.login}>
                     <form onSubmit={this.submitHandler}>
                     {form}
-                    <AuthButton>Вход</AuthButton>
+                   
+                    <AuthButton>
+                        Вход</AuthButton>
+                    
                     </form>
                     
                 </div>

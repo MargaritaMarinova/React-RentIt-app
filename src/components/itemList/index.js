@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styles from './index.module.css'
-import ItemCard from '../itemCard'
 import axios from '../../axios-order'
 import CardItem from '../item'
 
@@ -38,6 +37,8 @@ class ItemList extends Component {
                     name = {item.name}
                     description = {item.description}
                     price = {+item.price}
+                    id = {item.id}
+                    rented = {item.rented}
                     />
                 ))}
             </div>
