@@ -5,11 +5,12 @@ import HomePage from './pages/home'
 import ItemsPage from './pages/items'
 import RegisterPage from './pages/register'
 import LoginPage from './pages/login'
-// import ProfilePage from './pages/profile'
 import Logout from './components/logout/logout'
 import CreatePage from './pages/create'
 import CheckoutPage from './pages/checkout'
 import ThankyouPage from './pages/thankyou'
+import EditPage from './pages/edit';
+
 
 
 
@@ -25,10 +26,10 @@ class App extends Component {
           <Route path="/create" component={CreatePage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/login" component={LoginPage} />
-          {/* <Route path="/profile/:userid" component={ProfilePage} /> */}
           <Route path="/logout" component={Logout} />
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/thankyou" component={ThankyouPage} />
+          <Route path="/edit/:id" component={EditPage} />
         
           </Switch>
           </PageLayout>

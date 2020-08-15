@@ -32,8 +32,7 @@
                     value: '',
                     validation: {
                         required: true,
-                        
-                       
+                        minLength: 6
                     },
                     valid: false,
                     touched: false

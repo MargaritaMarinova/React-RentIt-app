@@ -1,17 +1,36 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styles from './index.module.css'
+import {Link} from 'react-router-dom'
+import Axios from 'axios'
 
-const ItemCard = (props) => (
+const CardItem = (item)=>{
+
+   
+    const handleRent = (event) => {
+        event.preventDefault()
+        const rentit = {
+            rented: true
+        }
+        
+        Axios.get('https://rentit-86cde.firebaseio.com/items.json')
+        .then (res => {
+            console.log(res)
+        })
+    }
     
-    <div className = {styles.itemCard}> 
-       <img alt="product" className={styles.image} src={props.imageUrl} />  
-      <p>{props.name}</p>
-      <p>{props.description}</p>
-      <p>Цена за наем (7дни): <strong>{props.price.toFixed(2)} лв</strong></p>
-      <button>Rent it!</button>
-    </div>
+    return (
+        <div className = {styles.item}>
+       <img alt="product" className={styles.image} src={item.imageUrl} />  
+      <p>{item.name}</p>
+      <p>{item.description}</p>
+      <p>Цена за наем (7дни): <strong>{item.price.toFixed(2)} лв</strong></p>
+      
+    <button onClick = {handleRent}>Rent it!</button>
+    
+        </div>
+        
+    )
+    
+}
 
-)
-
-
-export default ItemCard
+export default CardItem

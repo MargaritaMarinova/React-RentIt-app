@@ -7,12 +7,13 @@ import axios from 'axios'
 
 class CreatePage extends Component {
         state={
+            id: "",
             name: "",
             imageUrl: "",
             description: "",
-            category: "",
             price: "",
-            creator: 'Magi'
+            creator: "",
+            rented: false
         }
     
 
@@ -20,17 +21,25 @@ class CreatePage extends Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         const item = {
+            id:this.state.id,
             name: this.state.name,
             imageUrl: this.state.imageUrl,
             description: this.state.description,
-            category: this.state.category,
             price: this.state.price,
-            creator: this.state.creator
+            creator: this.state.creator,
+            rented: this.state.rented
         };
 
         axios.post('https://rentit-86cde.firebaseio.com/items.json', item)
         .then(response => {
-            console.log(response)
+            const id= response.data.name
+            axios.patch('https://rentit-86cde.firebaseio.com/items/'+id+'.json', {
+                id: response.data.name
+            }).then(res => {
+                console.log(res)
+            })
+           
+            
         })
     }
 
@@ -64,7 +73,7 @@ class CreatePage extends Component {
             onChange = {(event) => this.setState({description: event.target.value})}
             id="description"
             />
-            <label className = {styles.label}>Категория</label>
+            {/* <label className = {styles.label}>Категория</label>
             <select className = {styles.input}
             value={this.state.category}
             onChange = {(event) => this.setState({category: event.target.value})}
@@ -76,7 +85,7 @@ class CreatePage extends Component {
                 <option value="bedroom">Спалня</option>
                 <option value="bathroom">Баня</option>
                 <option value="outside">На открито</option>
-                </select>
+                </select> */}
             </form> 
        <div>
         <SubmitButton onClick = {this.handleSubmit} title = "Създай" />

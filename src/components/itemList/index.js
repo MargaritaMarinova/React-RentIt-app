@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styles from './index.module.css'
-import ItemCard from '../item'
+import ItemCard from '../itemCard'
 import axios from '../../axios-order'
+import CardItem from '../item'
 
 
 class ItemList extends Component {
@@ -31,7 +32,7 @@ class ItemList extends Component {
     return(
             <div>
                 {this.state.items.map(item => (
-                    <ItemCard 
+                    <CardItem
                     key = {item.id}
                     imageUrl = {item.imageUrl}
                     name = {item.name}
@@ -45,4 +46,6 @@ class ItemList extends Component {
 }
 
 export default ItemList
+    
+
     
