@@ -18,7 +18,9 @@
 }
 
 .logo {
-  height: 50px;
+  height: 40px;
+  margin-top: 5px;
+  border-right: 10px solid darkblue
 }
 
 @media (max-width: 499px) {

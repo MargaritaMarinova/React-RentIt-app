@@ -9,6 +9,7 @@ import Logout from './components/logout/logout'
 import CreatePage from './pages/create'
 import CheckoutPage from './pages/checkout'
 import ThankyouPage from './pages/thankyou'
+import EditPage from './pages/edit';
 
 
 
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/logout" component={Logout} />
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/thankyou" component={ThankyouPage} />
+          <Route path="/edit/:id" component={EditPage} />
         
           </Switch>
           </PageLayout>
