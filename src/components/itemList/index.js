@@ -15,8 +15,7 @@ class ItemList extends Component {
         const fetchedItems=[];
         for (let key in res.data) {
             fetchedItems.push({
-                ...res.data[key],
-                id: key
+                ...res.data[key]
             });
         }
         this.setState({items: fetchedItems})
