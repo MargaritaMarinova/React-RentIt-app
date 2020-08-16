@@ -10,6 +10,8 @@ import CreatePage from './pages/create'
 import CheckoutPage from './pages/checkout'
 import ThankyouPage from './pages/thankyou'
 import EditPage from './pages/edit';
+import DetailsPage from './pages/details';
+
 
 
 
@@ -30,6 +32,8 @@ class App extends Component {
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/thankyou" component={ThankyouPage} />
           <Route path="/edit/:id" component={EditPage} />
+          <Route path="/details/:id" component={DetailsPage} />
+          
         
           </Switch>
           </PageLayout>

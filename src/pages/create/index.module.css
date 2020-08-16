@@ -2,24 +2,25 @@
     width: 83%;
     display: inline-block;
     vertical-align: top;
-    text-align: center;
+    
 }
 
 .form-control {
     width: 30%;
     margin: 0 auto;
     padding: 1%;
-    text-align: center;
+    
 }
 
 .label {
     float: left;
     width: 30%;
     text-align: right;
+    margin-right: 10px;
 }
 
 .input {
-    text-align: center;
+    text-align: left;
     border:1px solid #234465;
     padding: 1%;
     width: 50%;
@@ -28,7 +29,9 @@
     margin-bottom: 5px;
 }
 
-form button {
+.button {
     width: auto;
     padding: 2%;
+    text-align: center;
+    margin-left: 200px
 }

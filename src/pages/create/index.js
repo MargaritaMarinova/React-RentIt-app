@@ -88,7 +88,7 @@ class CreatePage extends Component {
                 </select> */}
             </form> 
        <div>
-        <SubmitButton onClick = {this.handleSubmit} title = "Създай" />
+        <SubmitButton className = {styles.button} onClick = {this.handleSubmit} title = "Създай" />
         </div>
         
         </div>   

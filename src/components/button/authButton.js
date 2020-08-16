@@ -3,9 +3,12 @@ import styled from 'styled-components'
 
 const AuthButton = (props) => (
     <Button
-        disabled={props.disabled}
-        onClick={props.clicked}>{props.children}</Button>
+        disabled={props.disabled}>{props.children}</Button>
 );
+
+// const AuthButton = (props) => (
+//   <Button disabled={props.disabled}> {props.children} </Button>
+// );
 
 const Button = styled.button`
   background: #234465;
