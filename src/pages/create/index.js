@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import Title from '../../components/title'
-import SubmitButton from '../../components/button/submitButton'
+import AuthButton from '../../components/button/authButton'
 import styles from './index.module.css'
 import axios from 'axios'
+import {Redirect} from 'react-router'
 
 
 class CreatePage extends Component {
-        state={
+        state = {
+        item: {
             id: "",
             name: "",
             imageUrl: "",
@@ -14,7 +16,9 @@ class CreatePage extends Component {
             price: "",
             creator: "",
             rented: false
-        }
+        },
+        clicked: false
+    }
     
 
 
@@ -26,9 +30,11 @@ class CreatePage extends Component {
             imageUrl: this.state.imageUrl,
             description: this.state.description,
             price: this.state.price,
-            creator: this.state.creator,
-            rented: this.state.rented
+            creator: this.state.item.creator,
+            rented: this.state.item.rented
         };
+        
+        
 
         axios.post('https://rentit-86cde.firebaseio.com/items.json', item)
         .then(response => {
@@ -37,17 +43,18 @@ class CreatePage extends Component {
                 id: response.data.name
             }).then(res => {
                 console.log(res)
+                
             })
-           
-            
         })
+        this.setState ({clicked : true})   
     }
 
     render () {
+        const { clicked } = this.state;
         
     return (
         <div>
-        <form className = {styles.container}>
+        <form className = {styles.container} onSubmit = {this.handleSubmit}>
             <Title title = "Create" />
             <label className = {styles.label}>Име</label>
             <input className = {styles.input} type="text"
@@ -86,15 +93,14 @@ class CreatePage extends Component {
                 <option value="bathroom">Баня</option>
                 <option value="outside">На открито</option>
                 </select> */}
-            </form> 
-       <div>
-        <SubmitButton className = {styles.button} onClick = {this.handleSubmit} title = "Създай" />
-        </div>
-        
-        </div>   
+            <AuthButton>Създай</AuthButton>
+                </form>
+                {clicked && (
+                    <Redirect to={'/items'} />
+                )} 
+                </div>  
     )
-
-    }
+}
 }
 
 export default CreatePage

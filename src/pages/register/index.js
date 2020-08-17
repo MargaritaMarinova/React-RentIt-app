@@ -33,6 +33,7 @@ class RegisterPage extends Component {
                 value: '',
                 validation: {
                     required: true,
+                    minlength: 6
 
 
                 },
@@ -40,7 +41,7 @@ class RegisterPage extends Component {
                 touched: false
             }
         },
-        isRegistration: false,
+        isRegistration: true,
         clicked: false
 
     }
